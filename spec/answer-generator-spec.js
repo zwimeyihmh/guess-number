@@ -48,5 +48,11 @@ describe('AnswerGenerator', function() {
     it('it is random number',function(){
       expect(result4).toBe(true);
     });
+    it('should be mock', function() {
+      var answerGeneration = new AnswerGenerator();
+    spyOn(answerGeneration, 'getNumber').and.returnValue(true);
+
+    expect(answerGeneration.getNumber()).toBe(true);
+  });
   });
 });
