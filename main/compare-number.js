@@ -1,5 +1,5 @@
 'use strict';
-
+var _ = require('lodash');
 function CompareNumber(){
 
 }
@@ -7,16 +7,16 @@ function CompareNumber(){
 CompareNumber.prototype.compare = function(result,input){
   var sameA = 0;
   var sameB = 0;
+  var index;
   for(var i = 0;i < input.length;i++){
-    for(var x = 0;x < result.length;x++){
-      if(input[i] === result[x]){
-        if(i === x){
-          sameA++;
-          break;
-        }else {
-          sameB++;
-          break;
-        }
+    index = _.findIndex(result,function(word){
+      return word == input[i];
+    });
+    if(index !== -1){
+      if(i === index){
+        sameA++;
+      } else {
+        sameB++;
       }
     }
   }
